@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Mohamed Aboubakr" />
+    <meta name="keywords" content="HTML, CSS, JavaScript" />
+    <link href="./src/style.css" rel="stylesheet" />
+    <link href="./src/imgs/wordle.png" rel="shortcut icon" />
+    <script type="module" defer src="./src/js/app.js"></script>
+    <title>Wordle - Mohamed Aboubakr</title>
+  </head>
+  <body>
+    <div class="header">
+      <h2 class="game-name">Wordle</h2>
+      <svg
+        fill="#fff"
+        width="45px"
+        height="45px"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        class="how-to-play-icon"
+      >
+        <path
+          d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"
+        />
+        <path
+          d="M12 6a3.5 3.5 0 0 0-3.5 3.5 1 1 0 0 0 2 0A1.5 1.5 0 1 1 12 11a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-1.16A3.49 3.49 0 0 0 12 6z"
+        />
+        <circle cx="12" cy="17" r="1" />
+      </svg>
+    </div>
+    <div class="overlay"></div>
+    <div class="modal" id="how-to-play-modal">
+      <svg
+        fill="#fff"
+        width="30px"
+        height="30px"
+        viewBox="0 0 56 56"
+        xmlns="http://www.w3.org/2000/svg"
+        class="close-modal-btn close-htp-btn"
+      >
+        <path
+          d="M 10.0234 43.0234 C 9.2266 43.8203 9.2031 45.1797 10.0234 45.9766 C 10.8438 46.7734 12.1797 46.7734 13.0000 45.9766 L 28.0000 30.9766 L 43.0000 45.9766 C 43.7969 46.7734 45.1563 46.7969 45.9766 45.9766 C 46.7734 45.1562 46.7734 43.8203 45.9766 43.0234 L 30.9531 28.0000 L 45.9766 13.0000 C 46.7734 12.2031 46.7969 10.8437 45.9766 10.0469 C 45.1328 9.2266 43.7969 9.2266 43.0000 10.0469 L 28.0000 25.0469 L 13.0000 10.0469 C 12.1797 9.2266 10.8203 9.2031 10.0234 10.0469 C 9.2266 10.8672 9.2266 12.2031 10.0234 13.0000 L 25.0234 28.0000 Z"
+        />
+      </svg>
+      <h2 class="how-to-play-header">How to play the game</h2>
+      <p>Guess the wordle in 6 tries</p>
+      <ul class="hints">
+        <li>Each guess must be a valid 5-letter word</li>
+        <li>
+          The color of the tiles will change to show you how close your guess
+          was to the wordle
+        </li>
+      </ul>
+      <span>Examples :</span>
+      <div class="instruction">
+        <div class="instruction-wordle">
+          <div class="tile-correct">c</div>
+          <div>l</div>
+          <div>e</div>
+          <div>a</div>
+          <div>r</div>
+        </div>
+        <p class="instruction-info">
+          <span>c</span> is in the wordle and in the correct spot
+        </p>
+      </div>
+      <div class="instruction">
+        <div class="instruction-wordle">
+          <div>z</div>
+          <div>o</div>
+          <div class="tile-wrong-location">r</div>
+          <div>r</div>
+          <div>o</div>
+        </div>
+        <p class="instruction-info">
+          <span>r</span> is in the wordle but in the wrong spot
+        </p>
+      </div>
+      <div class="instruction">
+        <div class="instruction-wordle">
+          <div>s</div>
+          <div>m</div>
+          <div>a</div>
+          <div>r</div>
+          <div class="tile-wrong">t</div>
+        </div>
+        <p class="instruction-info">
+          <span>t</span> is not in the wordle in any spot
+        </p>
+      </div>
+    </div>
+    <div class="modal" id="status-modal">
+      <svg
+        fill="#fff"
+        width="25px"
+        height="25px"
+        viewBox="0 0 56 56"
+        xmlns="http://www.w3.org/2000/svg"
+        class="close-modal-btn close-status-btn"
+      >
+        <path
+          d="M 10.0234 43.0234 C 9.2266 43.8203 9.2031 45.1797 10.0234 45.9766 C 10.8438 46.7734 12.1797 46.7734 13.0000 45.9766 L 28.0000 30.9766 L 43.0000 45.9766 C 43.7969 46.7734 45.1563 46.7969 45.9766 45.9766 C 46.7734 45.1562 46.7734 43.8203 45.9766 43.0234 L 30.9531 28.0000 L 45.9766 13.0000 C 46.7734 12.2031 46.7969 10.8437 45.9766 10.0469 C 45.1328 9.2266 43.7969 9.2266 43.0000 10.0469 L 28.0000 25.0469 L 13.0000 10.0469 C 12.1797 9.2266 10.8203 9.2031 10.0234 10.0469 C 9.2266 10.8672 9.2266 12.2031 10.0234 13.0000 L 25.0234 28.0000 Z"
+        />
+      </svg>
+      <h2 class="status-message"></h2>
+      <p class="till-the-wordle"></p>
+      <button class="play-again-btn">Play again</button>
+    </div>
+    <div class="alert-container" data-alert-container></div>
+    <div data-guess-grid class="guess-grid">
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+    </div>
+    <div data-keyboard class="keyboard">
+      <button class="key" data-key="q">q</button>
+      <button class="key" data-key="w">w</button>
+      <button class="key" data-key="e">e</button>
+      <button class="key" data-key="r">r</button>
+      <button class="key" data-key="t">t</button>
+      <button class="key" data-key="y">y</button>
+      <button class="key" data-key="u">u</button>
+      <button class="key" data-key="i">i</button>
+      <button class="key" data-key="o">o</button>
+      <button class="key" data-key="p">p</button>
+      <div class="space"></div>
+      <button class="key" data-key="a">a</button>
+      <button class="key" data-key="s">s</button>
+      <button class="key" data-key="d">d</button>
+      <button class="key" data-key="f">f</button>
+      <button class="key" data-key="g">g</button>
+      <button class="key" data-key="h">h</button>
+      <button class="key" data-key="j">j</button>
+      <button class="key" data-key="k">k</button>
+      <button class="key" data-key="l">l</button>
+      <div class="space"></div>
+      <button data-enter class="key large">Enter</button>
+      <button class="key" data-key="z">z</button>
+      <button class="key" data-key="x">x</button>
+      <button class="key" data-key="c">c</button>
+      <button class="key" data-key="v">v</button>
+      <button class="key" data-key="b">b</button>
+      <button class="key" data-key="n">n</button>
+      <button class="key" data-key="m">m</button>
+      <button data-delete class="key large">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            fill="var(--color-tone-1)"
+            d="M22 3H7c-.69 0-1.23.35-1.59.88L0 12l5.41 8.11c.36.53.9.89 1.59.89h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7.07L2.4 12l4.66-7H22v14zm-11.59-2L14 13.41 17.59 17 19 15.59 15.41 12 19 8.41 17.59 7 14 10.59 10.41 7 9 8.41 12.59 12 9 15.59z"
+          ></path>
+        </svg>
+      </button>
+    </div>
+    <p class="author">
+      Created by
+      <a
+        rel="noopener noreferrer"
+        target="_blank"
+        href="https://www.linkedin.com/in/mohamed-aboubakr-87a982200/"
+        >Mohamed Aboubakr</a
+      >
+    </p>
+  </body>
+</html>
